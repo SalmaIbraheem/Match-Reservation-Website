@@ -21,9 +21,29 @@
             }
         </style>
     </head>
-    <div>
-        @include('layouts.navigation')
-        @yield('navigation')
-    </div>
+    <body>
+        <ul>
+            @include('layouts.navigation')
+            @yield('navigation')
+        </ul>
+        <ul>
+            <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center"> 
+                            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg" alt="Admin" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <h4>{{Auth::user()->name}}</h4>
+                                <p class="text-secondary mb-1">Full Stack Developer</p>
+                                <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p> 
+                                <button class="btn btn-primary">Follow</button> 
+                                <button class="btn btn-outline-primary">Message</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>      
+            </div>
+        </ul>
     </body>
 </html>
