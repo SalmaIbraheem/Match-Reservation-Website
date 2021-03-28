@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Seat extends Model
 {
+    protected $guarded = [];
+
     public function match()
     {
         return $this->belongsTo(Match::class);

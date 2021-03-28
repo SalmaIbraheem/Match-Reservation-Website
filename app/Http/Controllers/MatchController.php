@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Stadium;
 use App\Models\Match;
+use App\Models\Seat;
 
 use Illuminate\Http\Request;
 
@@ -29,9 +30,22 @@ class MatchController extends Controller
 
 
         ]);
-        Match::create($data);
+        $match = Match::create($data);
 
-        dd(request()->all());
+        $stad = Stadium::find($request->stadium_id);
+        $seatsTot = ($stad->rows)*($stad->columns);
+        for($i = 1; $i<=$seatsTot; $i++)
+        {
+           $match->seats()->create([
+                'seat_number' => $i,
+
+
+   
+            ]);
+
+        }
+   
+ 
     }
 
 }

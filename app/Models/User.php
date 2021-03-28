@@ -24,7 +24,7 @@ class User extends Authenticatable
 
     public function reservations()
     {
-        return $this->belongsToMany(Match::class);
+        return $this->hasMany(Reservation::class);
     }
 
     /**
