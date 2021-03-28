@@ -22,6 +22,11 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function reservations()
+    {
+        return $this->belongsToMany(Match::class);
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
