@@ -1,124 +1,134 @@
 @extends('layouts.app')
 
 @section('navigation')
-<nav class="nav">
-    <ul class="container">
-        <li class="logo">
-            <div class="logo">
-                <img src='/images/logo1.png' >
-            </div> 
-        </li>
-        <li>
-        @auth   
-        @if(Auth::user()->type == 0)
-        <div id="mainListDiv" class="main_list">
-            <ul class="navlinks">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Matches</a></li>
-                <li><a href="#">Categories</a></li>
-                <li><a href="#">Tickets</a></li>
-                <li><a href="#">Reservations</a></li>
-                <li class = "dropdown">
-                    <a href="#">
-                        <img class="rounded-circle"  src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"
-                        data-holder-rendered="true">
-                    </a>
-                    <div class="dropdown-content">
-                        <a href="{{ route('profile') }}" class="dropdown-item">Profile</a>
-                        <a href="#" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>                        
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form> 
-                    </div>
-                </li>
-            </ul>
+<nav class="navbar navbar-expand-lg navbar-dark py-5 transparent ">
+  <a class="navbar-brand img-fluid" href="#"><img src='/images/logo1_50.png' ></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse " id="navbarColor02">
+  @auth   
+  @if(Auth::user()->type == 0)  
+    <ul class="navbar-nav mr-auto" style = 'font-size: 20px;padding-top: 70px;'>
+      <li class="nav-item active" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Matches</a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Categories</a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Tickets</a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Reservations</a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="{{ route('profile') }}">Profile</a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a href="#"  class="nav-link" onclick="document.getElementById('logout-form').submit();">Logout</a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form> 
+      </li>
+      <li class="nav-item dropdown" style = 'padding-left: 20px;'>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
         </div>
-        @elseif(Auth::user()->type == 1)
-        <div id="mainListDiv" class="main_list">
-            <ul class="navlinks">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Matches</a></li>
-                <li><a href="#">Categories</a></li>
-                <li><a href="#">Tickets</a></li>
-                <li><a href="#">Reservations</a></li>
-                <li class = "dropdown">
-                    <a href="#">
-                        <img class="rounded-circle"  src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"
-                        data-holder-rendered="true">
-                    </a>
-                    <div class="dropdown-content">
-                        <a href="{{ route('profile') }}" class="dropdown-item">Profile</a>
-                        <a href="#" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>                        
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form> 
-                    </div>
-                </li>
-            </ul>
-        </div>
-        @elseif(Auth::user()->type == 2) 
-        <div id="mainListDiv" class="main_list">
-            <ul class="navlinks">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Matches</a></li>
-                <li><a href="#">Categories</a></li>
-                <li><a href="#">Tickets</a></li>
-                <li><a href="#">Reservations</a></li>
-                <li class = "dropdown">
-                    <a href="#">
-                        <img class="rounded-circle"  src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"
-                        data-holder-rendered="true">
-                    </a>
-                    <div class="dropdown-content">
-                        <a href="{{ route('profile') }}"  class="dropdown-item" >Profile</a>
-                        <a href="#"  class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>                        
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form> 
-                    </div>
-                </li>
-            </ul>
-        </div>
-        @endif
-        @else
-        <div id="mainListDiv" class="main_list" >
-            <ul class="navlinks">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Matches</a></li>
-                <li><a href="#">Categories</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="{{ route('login') }}">Login</a></li>
-                <li><a href="{{ route('register') }}">Register</a></li>
-            </ul>
-        </div>
-        @endauth
-    </div>
-        </li>
+      </li>
     </ul>
-    <span class="navTrigger">
-        <i></i>
-        <i></i>
-        <i></i>
-    </span>
-    </div>
+    @elseif(Auth::user()->type == 1)
+    <ul class="navbar-nav mr-auto" style = 'font-size: 20px;padding-top: 70px;'>
+      <li class="nav-item active" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Matches</a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Categories</a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Tickets</a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Reservations</a>
+      </li>
+      <li class="nav-item dropdown" style = 'padding-left: 20px;'>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </li>
+    </ul>
+    @elseif(Auth::user()->type == 2) 
+    <ul class="navbar-nav mr-auto" style = 'font-size: 20px;padding-top: 70px;'>
+      <li class="nav-item active" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Matches</a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Categories</a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Tickets</a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Reservations</a>
+      </li>
+      <li class="nav-item dropdown" style = 'padding-left: 20px;'>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </li>
+    </ul>
+    @endif
+    @else
+    <ul class="navbar-nav mr-auto" style = 'font-size: 20px;padding-top: 70px;'>
+      <li class="nav-item active" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Matches</a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="#">Categories</a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="{{ route('login') }}">Login</a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a class="nav-link" href="{{ route('register') }}">Register</a>
+      </li>
+    </ul>
+    @endauth
+  </div>
 </nav>
-<section class="home">
-
-</div>
-
-<!-- Jquery needed -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="js/navbar.js"></script>
-
-<!-- Function used to shrink nav bar removing paddings and adding black background -->
-    <script>
-        $(window).scroll(function() {
-            if ($(document).scrollTop() > 50) {
-                $('.nav').addClass('affix');
-                console.log("OK");
-            } else {
-                $('.nav').removeClass('affix');
-            }
-        });
-    </script>
-@stop

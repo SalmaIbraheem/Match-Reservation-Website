@@ -38,7 +38,6 @@ body, html {
 /*---------------------------------------------*/
 a {
 	font-family: Montserrat-Regular;
-	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
 	margin: 0px;
@@ -187,7 +186,7 @@ iframe {
   background: -o-linear-gradient(bottom, #005bea, #00c6fb);
   background: -moz-linear-gradient(bottom, #005bea, #00c6fb);
   background: linear-gradient(bottom, #005bea, #00c6fb);
-  opacity: 0.3;
+  opacity: 0;
 }
 
 .wrap-login100 {

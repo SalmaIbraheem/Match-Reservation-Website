@@ -18,6 +18,7 @@
         <style>
             body {
                 font-family: 'Nunito';
+                background-image: url("/images/img-01.jpg");
             }
         </style>
     </head>
