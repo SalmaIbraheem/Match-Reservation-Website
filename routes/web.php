@@ -23,6 +23,8 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 
+Route::get('/m',[App\Http\Controllers\MatchController::class, 'index']);
+Route::get('/m/{id}',[App\Http\Controllers\MatchController::class, 'show'])->name('displayMatch');
 Route::get('/m/create',[App\Http\Controllers\MatchController::class, 'create']);
 Route::post('/m',[App\Http\Controllers\MatchController::class, 'store']);
 

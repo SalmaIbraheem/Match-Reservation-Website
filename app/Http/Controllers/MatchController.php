@@ -16,6 +16,19 @@ class MatchController extends Controller
         return view('matches.create',compact('stadiums'));
     }
 
+    public function index()
+    {
+        $matches = Match::all();
+        return view('matches.index',compact('matches'));
+    }
+
+    public function show($m)
+    {
+
+        $match = Match::find($m);
+        return view('matches.show',compact('match'));
+    }
+
     public function store(Request $request)
     {
         //

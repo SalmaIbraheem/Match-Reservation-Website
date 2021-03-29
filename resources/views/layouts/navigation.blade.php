@@ -14,7 +14,7 @@
         <div id="mainListDiv" class="main_list">
             <ul class="navlinks">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Matches</a></li>
+                <li><a href="/m">Matches</a></li>
                 <li><a href="#">Categories</a></li>
                 <li><a href="#">Tickets</a></li>
                 <li><a href="#">Reservations</a></li>
@@ -37,7 +37,7 @@
         <div id="mainListDiv" class="main_list">
             <ul class="navlinks">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Matches</a></li>
+                <li><a href="/m">Matches</a></li>
                 <li><a href="/m/create">Create Match</a></li>
                 <li><a href="/s/create">Create Stadium</a></li>
                 <li><a href="#">Reservations</a></li>
@@ -60,7 +60,7 @@
         <div id="mainListDiv" class="main_list">
             <ul class="navlinks">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Matches</a></li>
+                <li><a href="/m">Matches</a></li>
                 <li><a href="#">Categories</a></li>
                 <li><a href="#">Tickets</a></li>
                 <li><a href="#">Reservations</a></li>
@@ -84,7 +84,7 @@
         <div id="mainListDiv" class="main_list" >
             <ul class="navlinks">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Matches</a></li>
+                <li><a href="/m">Matches</a></li>
                 <li><a href="#">Categories</a></li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="{{ route('login') }}">Login</a></li>
