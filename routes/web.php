@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MatchController;
+use App\Http\Controllers\ReserveController;
 
 
 /*
@@ -33,3 +34,4 @@ Route::post('/s',[App\Http\Controllers\StadiumController::class, 'store']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::post('/reserve/{id}',[App\Http\Controllers\ReserveController::class, 'store'])->name('reserveSeat');

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
+    protected $guarded = [];
     public function match()
     {
         return $this->belongsTo(Match::class);
