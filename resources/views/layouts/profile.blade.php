@@ -28,12 +28,10 @@
         @yield('navigation')
     </div>
     <body>
-    <table style="width:100%">
-    <tr>
-    <th style="width:30%;padding-left: 10%;">
+    <div style="float:left;width=50%;padding:20px 100px;">
         <ul style="padding-left:20px;">
             <div class="row gutters-sm transparent">
-            <div class="col-md-4 mb-3 transparent">
+            <div class="col-md-12 mb-3 transparent">
                 <div class="transparent">
                     <div class="card-body transparent" style="padding-top:150px;">
                         <div class="d-flex flex-column align-items-center text-center "> 
@@ -49,40 +47,38 @@
                 </div>      
             </div>
         </ul>
-    </th>
-    <th style="width:50%">
-    <div class="container">
+    </div>
+    <div style="float:left;width=50%;padding:20px 0px;">
     <div class="row" style="color: white;">
         <div class="col-md-12" >
             <div class="heading" style="padding-bottom:40px;">
             <h3 style="font-size:30px;">Recent Reservation</span></h3>
         </div>
-        <div class="row" style="background: rgba(0, 0, 0, 0.2); padding:20px 0px">
-        <div class="col-md-6"><img src="/images/st.jpg" alt="website template image" style="width:300px;hight:300px"></div>
-        <div class="col-md-6">
-            <div class="full blog_cont">
-            <h4 style="font-size:30px;">Egypt vs Ghana</h4>
-            <p style="font-size:15px;padding:5px;color:lightgray;">Match Date</p>
-            <p style="font-size:15px;padding:5px;color:lightgray;">Address: </p>
-            <p style="font-size:15px;padding:5px;color:lightgray;">Reservation Seat: 15</p>
+        @foreach($reservations as $reserve)
+            <div class="row container" style="background: rgba(0, 0, 0, 0.2); padding:20px 0px">
+                <div class="col-md-6"><img src="/images/st.jpg" alt="website template image" style="width:300px;hight:300px"></div>
+                    <div class="col-md-6">
+                        <div class="full blog_cont">
+                        <h4 style="font-size:30px;margin-left:30px;">Egypt vs Ghana</h4>
+                        <p style="font-size:15px;color:lightgray;margin-left:40px;margin-top:20px;">Match Date</p>
+                        <p style="font-size:15px;color:lightgray;margin-left:40px;">Address: </p>
+                        <p style="font-size:15px;color:lightgray;margin-left:40px;">Reservation Seat: 15</p>
+                        </div>
+                        <div class="form-group row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                        <form method="POST" action= '/profile/Rdelete/{{$reserve["id"]}}'>
+                        @csrf
+                            <button type="submit" class="btn btn-primary" style="margin: 0% 50%;font-size:15px;padding:5px 10px;background-color:gray;border-color:gray;" >
+                                {{ __('Cancel Reservation') }}
+                            </button>
+                        </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group row mb-0">
-            <div class="col-md-6 offset-md-4">
-                <button type="submit" class="btn btn-primary" style="margin: 0% 50%;font-size:15px;padding:5px 10px;background-color:gray;border-color:gray">
-                    {{ __('Cancel Reservation') }}
-                </button>
-            </div>
-        </div>
-        </div>
-        </div>
+        @endforeach
     </div>
     </div>
-    </th>
-    
-    <th style="width:50%">
-    </th>
-    </tr>
-    </table>
         
     </body>
 </html>

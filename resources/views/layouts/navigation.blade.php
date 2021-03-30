@@ -12,9 +12,7 @@
   @if(Auth::user()->type == 0)  
     <ul class="navbar-nav mr-auto" style = 'font-size: 20px;padding-top: 70px;'>
       <li class="nav-item active" style = 'padding-left: 20px;'>
-        <a class="nav-link" href="#">Home
-          <span class="sr-only">(current)</span>
-        </a>
+        <a class="nav-link" href="#">Home</a>
       </li>
       <li class="nav-item" style = 'padding-left: 20px;'>
         <a class="nav-link" href="#">Matches</a>
