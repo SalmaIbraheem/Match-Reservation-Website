@@ -28,57 +28,33 @@
         @yield('navigation')
     </div>
     <body>
-    <div style="float:left;width=50%;padding:20px 100px;">
-        <ul style="padding-left:20px;">
-            <div class="row gutters-sm transparent">
-            <div class="col-md-12 mb-3 transparent">
-                <div class="transparent">
-                    <div class="card-body transparent" style="padding-top:150px;">
-                        <div class="d-flex flex-column align-items-center text-center "> 
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ0wODxC8jPNQdAj4NRUYgKFgE-uz-1sb19g&usqp=CAU" alt="Admin" class="rounded-circle" width="150">
-                            <div class="mt-3">
-                                <h4 style="font-size:35px;color:white;">{{Auth::user()->name}}</h4>
-                                <p class="text-secondary mb-1" style="font-size:15px;">{{Auth::user()->email}}</p>
-                                <p class="text-muted font-size-sm">{{Auth::user()->city}}</p> 
-                                <a class="btn btn-primary" style="font-size:15px;padding:5px 10px;background-color:gray;border-color:gray" href="{{ route('editpage') }}">Edit</a> 
-                            </div>
-                        </div>
-                    </div>
-                </div>      
-            </div>
-        </ul>
-    </div>
-    <div style="float:left;width=50%;padding:20px 0px;">
-    <div class="row" style="color: white;">
-        <div class="col-md-12" >
-            <div class="heading" style="padding-bottom:40px;">
-            <h3 style="font-size:30px;">Recent Reservation</span></h3>
-        </div>
-        @foreach($reservations as $reserve)
-            <div class="row container" style="background: rgba(0, 0, 0, 0.2); padding:20px 0px">
-                <div class="col-md-6"><img src="/images/st.jpg" alt="website template image" style="width:300px;hight:300px"></div>
-                    <div class="col-md-6">
-                        <div class="full blog_cont">
-                        <h4 style="font-size:30px;margin-left:30px;">Egypt vs Ghana</h4>
-                        <p style="font-size:15px;color:lightgray;margin-left:40px;margin-top:20px;">Match Date</p>
-                        <p style="font-size:15px;color:lightgray;margin-left:40px;">Address: </p>
-                        <p style="font-size:15px;color:lightgray;margin-left:40px;">Reservation Seat: 15</p>
-                        </div>
-                        <div class="form-group row mb-0">
-                        <div class="col-md-6 offset-md-4">
-                        <form method="POST" action= '/profile/Rdelete/{{$reserve["id"]}}'>
-                        @csrf
-                            <button type="submit" class="btn btn-primary" style="margin: 0% 50%;font-size:15px;padding:5px 10px;background-color:gray;border-color:gray;" >
-                                {{ __('Cancel Reservation') }}
-                            </button>
-                        </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">State</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach($users as $user)
+        <tr>
+            <th scope="row">1</th>
+            <td>{{$user["id"]}}</td>
+            <td>{{$user["name"]}}</td>
+            <td>{{$user["email"]}}</td>
+            <td>
+            <form method="POST" action= '/users'>
+            @csrf
+                <button type="submit" style="margin: 0% 50%;font-size:15px;padding:5px 10px;background-color:gray;border-color:gray;" >
+                    {{$user["type"]}}
+                </button>
+            </form>
+            </td>
+        </tr>
         @endforeach
-    </div>
-    </div>
-        
+        </tbody>
+    </table>   
     </body>
 </html>

@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Reservation;
 class ProfileController extends Controller
 {
     public function index()
     {
-        return view('layouts.profile');
+        $reserve = Reservation::where('user_id',1)->get();
+        return view('layouts.profile')->with (['reservations' => $reserve]);
+    }
+    public function delete($id)
+    {
+        $reserve = Reservation::find($id); 
+        $reserve->delete(); //delete the client
+        $reserve = Reservation::where('user_id',1)->get();
+        return redirect()->route('profile')->with (['reservations' => $reserve]);
     }
 }

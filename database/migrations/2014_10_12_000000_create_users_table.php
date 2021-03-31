@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->tinyInteger('type')->default('0'); //0-->customer, 1-->manager, 2-->admin, 
+            $table->string('city');
         });
     }
 
