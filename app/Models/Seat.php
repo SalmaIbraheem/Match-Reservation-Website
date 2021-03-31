@@ -13,5 +13,9 @@ class Seat extends Model
     {
         return $this->belongsTo(Match::class);
     }
+    public function reservation()
+    {
+        return $this->hasOne(Reservation::class);
+    }
 
 }

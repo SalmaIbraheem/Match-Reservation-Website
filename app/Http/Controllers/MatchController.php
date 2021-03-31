@@ -16,6 +16,19 @@ class MatchController extends Controller
         return view('matches.create',compact('stadiums'));
     }
 
+    public function index()
+    {
+        $matches = Match_::all();
+        return view('matches.index',compact('matches'));
+    }
+
+    public function show($m)
+    {
+
+        $match = Match_::find($m);
+        return view('matches.show',compact('match'));
+    }
+
     public function store(Request $request)
     {
         //
@@ -30,7 +43,7 @@ class MatchController extends Controller
 
 
         ]);
-        $match = Match::create($data);
+        $match = Match_::create($data);
 
         $stad = Stadium::find($request->stadium_id);
         $seatsTot = ($stad->rows)*($stad->columns);

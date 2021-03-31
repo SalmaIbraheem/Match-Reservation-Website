@@ -7,16 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
+    protected $guarded = [];
     public function match()
     {
-        //return $this->belongsTo(Match::class);
+        return $this->belongsTo(Match_::class);
     }
     public function user()
     {
-        //return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
     public function seat()
     {
-        //return $this->belongsTo(Seat::class);
+        return $this->belongsTo(Seat::class);
     }
 }

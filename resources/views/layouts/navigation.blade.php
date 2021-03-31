@@ -15,7 +15,7 @@
         <a class="nav-link" href="#">Home</a>
       </li>
       <li class="nav-item" style = 'padding-left: 20px;'>
-        <a class="nav-link" href="#">Matches</a>
+        <a class="nav-link" href="/m">Matches</a>
       </li>
       <li class="nav-item" style = 'padding-left: 20px;'>
         <a class="nav-link" href="#">Categories</a>
@@ -57,13 +57,19 @@
         <a class="nav-link" href="#">Matches</a>
       </li>
       <li class="nav-item" style = 'padding-left: 20px;'>
-        <a class="nav-link" href="#">Categories</a>
+        <a class="nav-link" href="/m/create">Create Match</a>
       </li>
       <li class="nav-item" style = 'padding-left: 20px;'>
-        <a class="nav-link" href="#">Tickets</a>
+        <a class="nav-link" href="/s/create">Create Stadium</a>
       </li>
       <li class="nav-item" style = 'padding-left: 20px;'>
         <a class="nav-link" href="#">Reservations</a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a href="#"  class="nav-link" onclick="document.getElementById('logout-form').submit();">Logout</a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form> 
       </li>
       <li class="nav-item dropdown" style = 'padding-left: 20px;'>
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -84,16 +90,22 @@
         </a>
       </li>
       <li class="nav-item" style = 'padding-left: 20px;'>
-        <a class="nav-link" href="#">Matches</a>
+        <a class="nav-link" href="/m">Matches</a>
       </li>
       <li class="nav-item" style = 'padding-left: 20px;'>
-        <a class="nav-link" href="#">Categories</a>
+        <a class="nav-link" href="/users">Users</a>
       </li>
       <li class="nav-item" style = 'padding-left: 20px;'>
         <a class="nav-link" href="#">Tickets</a>
       </li>
       <li class="nav-item" style = 'padding-left: 20px;'>
         <a class="nav-link" href="#">Reservations</a>
+      </li>
+      <li class="nav-item" style = 'padding-left: 20px;'>
+        <a href="#"  class="nav-link" onclick="document.getElementById('logout-form').submit();">Logout</a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form> 
       </li>
       <li class="nav-item dropdown" style = 'padding-left: 20px;'>
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -103,6 +115,7 @@
           <a class="dropdown-item" href="#">Something else here</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Separated link</a>
+
         </div>
       </li>
     </ul>

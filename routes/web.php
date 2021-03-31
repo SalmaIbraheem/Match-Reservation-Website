@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MatchController;
+use App\Http\Controllers\ReserveController;
 
 
 /*
@@ -24,14 +25,19 @@ Auth::routes();
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::POST('/profile/Rdelete/{id}', [App\Http\Controllers\ProfileController::class, 'delete'])->name('Rdelete');
 
+Route::get('/users', [App\Http\Controllers\UsersController::class, 'index']);
+
 Route::get('/profile/edit', [App\Http\Controllers\EditController::class, 'index'])->name('editpage');
 Route::post('/profile/edit/{id}', [App\Http\Controllers\EditController::class, 'edit'])->name('edit');
 
 
 Route::get('/m/create',[App\Http\Controllers\MatchController::class, 'create']);
+Route::get('/m',[App\Http\Controllers\MatchController::class, 'index']);
+Route::get('/m/{id}',[App\Http\Controllers\MatchController::class, 'show'])->name('displayMatch');
 Route::post('/m',[App\Http\Controllers\MatchController::class, 'store']);
 
 Route::get('/s/create',[App\Http\Controllers\StadiumController::class, 'create']);
 Route::post('/s',[App\Http\Controllers\StadiumController::class, 'store']);
 
 
+Route::post('/reserve/{id}',[App\Http\Controllers\ReserveController::class, 'store'])->name('reserveSeat');

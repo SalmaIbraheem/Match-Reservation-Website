@@ -10,6 +10,6 @@ class Stadium extends Model
     protected $guarded = [];
     public function matches()
     {
-        return $this->hasMany(Match::class);
+        return $this->hasMany(Match_::class);
     }
 }
