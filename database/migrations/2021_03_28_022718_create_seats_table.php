@@ -17,10 +17,10 @@ class CreateSeatsTable extends Migration
             $table->id();
             $table->integer('seat_number');
             $table->boolean('free')->default(true); 
-            $table->unsignedBigInteger('match_id');
+            $table->unsignedBigInteger('match__id');
 
             $table->timestamps();
-            $table->index('match_id');
+            $table->index('match__id');
 
         });
     }

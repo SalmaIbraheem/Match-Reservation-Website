@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Stadium;
-use App\Models\Match;
+use App\Models\Match_;
 use App\Models\Seat;
 
 use Illuminate\Http\Request;
@@ -18,14 +18,14 @@ class MatchController extends Controller
 
     public function index()
     {
-        $matches = Match::all();
+        $matches = Match_::all();
         return view('matches.index',compact('matches'));
     }
 
     public function show($m)
     {
 
-        $match = Match::find($m);
+       $match = Match_::find($m);
         return view('matches.show',compact('match'));
     }
 
@@ -43,7 +43,7 @@ class MatchController extends Controller
 
 
         ]);
-        $match = Match::create($data);
+        $match = Match_::create($data);
 
         $stad = Stadium::find($request->stadium_id);
         $seatsTot = ($stad->rows)*($stad->columns);

@@ -10,7 +10,7 @@ class Reservation extends Model
     protected $guarded = [];
     public function match()
     {
-        return $this->belongsTo(Match::class);
+        return $this->belongsTo(Match_::class);
     }
     public function user()
     {
