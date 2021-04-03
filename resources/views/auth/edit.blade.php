@@ -39,30 +39,6 @@
                 <form method="POST" action="/profile/edit/{{Auth::user()->id}}">
                     @csrf
                     <div class="wrap-input100 validate-input m-b-10">
-                        <label for="name" style = "color: lightgray;">Name</label> 
-                        <input id="name" class="input100 form-control " type="name" name="name" placeholder="Name" value="{{Auth::user()->name}}" required autocomplete="name" autofocus> 
-
-                        @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-
-                        <span class="focus-input100"></span> 
-                    </div>
-                    <div class="wrap-input100 validate-input m-b-10">
-                        <label for="email" style = "color: lightgray;">Email address</label> 
-                        <input id="email" class="input100 form-control " type="email" name="email" placeholder="Email" value="{{Auth::user()->email}}" required autocomplete="email" autofocus> 
-
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-
-                        <span class="focus-input100"></span> 
-                    </div>
-                    <div class="wrap-input100 validate-input m-b-10">
                         <label for="city" style = "color: lightgray;">City</label> 
                         <input id="city" class="input100 form-control " type="city" name="city" placeholder="city" value="{{Auth::user()->city}}" required autocomplete="city" autofocus> 
                         @error('city')
@@ -73,19 +49,20 @@
 
                         <span class="focus-input100"></span> 
                     </div>
-                    <!--/>
-                    <div class="wrap-input100 validate-input m-b-10">
-                        <label for="password" style = "color: lightgray;">Password</label> 
-                        <input id="password" class="input100 form-control "  name="password" autocomplete="password" autofocus> 
-                        @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-
-                        <span class="focus-input100"></span> 
                     </div>
-                    <!-->
+                    <div class="wrap-input100 validate-input m-b-10">
+                        <label for="password" style = "color: lightgray;">Password</label>
+                        <input id="password" type="password" class="input100 form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-10">
+                        <label for="password-confirm" style = "color: lightgray;">Confirm Password</label>
+                        <input id="password-confirm" type="password" class="input100 form-control" name="password_confirmation" required autocomplete="new-password">
+                    </div>
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-primary" style="width: inherit; margin: 10% 50%;">

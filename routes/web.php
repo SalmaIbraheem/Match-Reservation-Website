@@ -23,9 +23,11 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
-Route::POST('/profile/Rdelete/{id}', [App\Http\Controllers\ProfileController::class, 'delete'])->name('Rdelete');
+Route::delete('/profile/{id}', [App\Http\Controllers\ProfileController::class, 'delete'])->name('Rdelete');
 
-Route::get('/users', [App\Http\Controllers\UsersController::class, 'index']);
+Route::get('/users', [App\Http\Controllers\UsersController::class, 'index'])->name('users');
+Route::post('/users/{id}', [App\Http\Controllers\UsersController::class, 'changetype'])->name('userType');
+Route::delete('/users/{id}', [App\Http\Controllers\UsersController::class, 'delete'])->name('userDelete');
 
 Route::get('/profile/edit', [App\Http\Controllers\EditController::class, 'index'])->name('editpage');
 Route::post('/profile/edit/{id}', [App\Http\Controllers\EditController::class, 'edit'])->name('edit');

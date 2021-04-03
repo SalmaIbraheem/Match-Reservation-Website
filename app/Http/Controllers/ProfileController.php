@@ -14,7 +14,13 @@ class ProfileController extends Controller
     public function delete($id)
     {
         $reserve = Reservation::find($id); 
-        $reserve->delete(); //delete the client
+        $seat = $reserve->seat;
+        $seat->update([
+            'free'=>true,
+        ]);
+        $reserve->delete(); 
+        $seat->save();
+
         $reserve = Reservation::where('user_id',1)->get();
         return redirect()->route('profile')->with (['reservations' => $reserve]);
     }

@@ -15,7 +15,7 @@ class ReserveController extends Controller
  
         auth()->user()->reservations()->create([
             'seat_id' => $seat->id,
-            'match_id' => $seat->match->id,
+            'match__id' => $seat->match_->id,
 
 
         ]);

@@ -9,9 +9,9 @@ class Seat extends Model
 {
     protected $guarded = [];
 
-    public function match()
+    public function match_()
     {
-        return $this->belongsTo(Match::class);
+        return $this->belongsTo(Match_::class);
     }
     public function reservation()
     {

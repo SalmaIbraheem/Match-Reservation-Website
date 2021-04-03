@@ -13,7 +13,7 @@ class CreateMatchesTable extends Migration
      */
     public function up()
     {
-        Schema::create('matches', function (Blueprint $table) {
+        Schema::create('match_s', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('stadium_id');
             $table->timestamps();

@@ -59,14 +59,16 @@
                 <div class="col-md-6"><img src="/images/st.jpg" alt="website template image" style="width:300px;hight:300px"></div>
                     <div class="col-md-6">
                         <div class="full blog_cont">
-                        <h4 style="font-size:30px;margin-left:30px;">Egypt vs Ghana</h4>
+                        <h4 style="font-size:30px;margin-left:30px;">{{$reserve->match_->homeTeam}}</h4>
                         <p style="font-size:15px;color:lightgray;margin-left:40px;margin-top:20px;">Match Date</p>
                         <p style="font-size:15px;color:lightgray;margin-left:40px;">Address: </p>
                         <p style="font-size:15px;color:lightgray;margin-left:40px;">Reservation Seat: 15</p>
                         </div>
                         <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
-                        <form method="POST" action= '/profile/Rdelete/{{$reserve["id"]}}'>
+                        <form method="POST" action= '/profile/{{$reserve["id"]}}'>
+                        
+                            <input type="hidden" name="_method" value="DELETE">
                         @csrf
                             <button type="submit" class="btn btn-primary" style="margin: 0% 50%;font-size:15px;padding:5px 10px;background-color:gray;border-color:gray;" >
                                 {{ __('Cancel Reservation') }}

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Stadium;
-use App\Models\Match;
+use App\Models\Match_;
 use App\Models\Seat;
 
 use Illuminate\Http\Request;
