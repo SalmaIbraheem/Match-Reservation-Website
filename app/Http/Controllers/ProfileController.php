@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reservation;
+use Auth;
 class ProfileController extends Controller
 {
     public function index()
     {
-        $reserve = Reservation::where('user_id',1)->get();
+        $reserve = Reservation::where('user_id',Auth::user()->id)->get();
         return view('layouts.profile')->with (['reservations' => $reserve]);
     }
     public function delete($id)

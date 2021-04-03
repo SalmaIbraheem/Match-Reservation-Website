@@ -25,8 +25,8 @@ class MatchController extends Controller
     public function show($m)
     {
 
-        $match = Match_::find($m);
-        return view('matches.show',compact('match'));
+       $match = Match_::find($m);
+        return view('matches.shows',compact('match'));
     }
 
     public function store(Request $request)

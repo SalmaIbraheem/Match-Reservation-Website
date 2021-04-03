@@ -17,7 +17,6 @@ class ReserveController extends Controller
             'seat_id' => $seat->id,
             'match__id' => $seat->match_->id,
 
-
         ]);
         $seat->update([
             'free'=>false,
