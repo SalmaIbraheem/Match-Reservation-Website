@@ -28,27 +28,7 @@
         @yield('navigation')
     </div>
     <body>
-    <div style="float:left;width=50%;padding:20px 100px;">
-        <ul style="padding-left:20px;">
-            <div class="row gutters-sm transparent">
-            <div class="col-md-12 mb-3 transparent">
-                <div class="transparent">
-                    <div class="card-body transparent" style="padding-top:150px;">
-                        <div class="d-flex flex-column align-items-center text-center "> 
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ0wODxC8jPNQdAj4NRUYgKFgE-uz-1sb19g&usqp=CAU" alt="Admin" class="rounded-circle" width="150">
-                            <div class="mt-3">
-                                <h4 style="font-size:35px;color:white;">{{Auth::user()->name}}</h4>
-                                <p class="text-secondary mb-1" style="font-size:15px;">{{Auth::user()->email}}</p>
-                                <p class="text-muted font-size-sm">{{Auth::user()->city}}</p> 
-                                <a class="btn btn-primary" style="font-size:15px;padding:5px 10px;background-color:#333333;;border-color:gray" href="{{ route('editpage') }}">Edit</a> 
-                            </div>
-                        </div>
-                    </div>
-                </div>      
-            </div>
-        </ul>
-    </div>
-    <div style="float:left;width=50%;padding:20px 0px;">
+    <div style="float:left;width=50%;padding:20px 50px;">
     <div class="row" style="color: white;">
         <div class="col-md-12" >
             <div class="heading" style="padding-bottom:40px;">
@@ -64,18 +44,6 @@
                         <p style="font-size:15px;color:lightgray;margin-left:40px;">Address: {{$reserve->match_->stadium->location}}</p>
                         <p style="font-size:15px;color:lightgray;margin-left:40px;">Reservation Seat: {{$reserve->seat->seat_number}}</p>
                         </div>
-                        <div class="form-group row mb-0">
-                        <div class="col-md-6 offset-md-4">
-                        <form method="POST" action= '/profile/{{$reserve["id"]}}'>
-                        
-                            <input type="hidden" name="_method" value="DELETE">
-                        @csrf
-                            <button type="submit" class="btn btn-primary" style="margin: 0% 50%;font-size:15px;padding:5px 10px;background: #333333;;border-color:gray;" >
-                                {{ __('Cancel Reservation') }}
-                            </button>
-                        </form>
-                        </div>
-                    </div>
                 </div>
             </div>
         @endforeach

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use App\Models\Stadium;
 use App\Models\Match;
 use App\Models\Seat;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Auth;
 
 class ReserveController extends Controller
 {
@@ -24,5 +26,10 @@ class ReserveController extends Controller
 
         return $seat->seat_number;
       
+    }
+    public function getall()
+    {
+        $reserve = Reservation::where('user_id',Auth::user()->id)->get();
+        return view('layouts.reserve')->with (['reservations' => $reserve]);
     }
 }

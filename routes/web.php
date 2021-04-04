@@ -43,3 +43,4 @@ Route::post('/s',[App\Http\Controllers\StadiumController::class, 'store']);
 
 
 Route::post('/reserve/{id}',[App\Http\Controllers\ReserveController::class, 'store'])->name('reserveSeat');
+Route::get('/reserve',[App\Http\Controllers\ReserveController::class, 'getall'])->name('reservations');

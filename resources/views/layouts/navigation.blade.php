@@ -24,7 +24,7 @@
         <a class="nav-link" href="#">Tickets</a>
       </li>
       <li class="nav-item" style = 'padding-left: 20px;'>
-        <a class="nav-link" href="#">Reservations</a>
+        <a class="nav-link" href="/reserve">Reservations</a>
       </li>
       <li class="nav-item" style = 'padding-left: 20px;'>
         <a class="nav-link" href="{{ route('profile') }}">Profile</a>
@@ -63,7 +63,7 @@
         <a class="nav-link" href="/s/create">Create Stadium</a>
       </li>
       <li class="nav-item" style = 'padding-left: 20px;'>
-        <a class="nav-link" href="#">Reservations</a>
+        <a class="nav-link" href="/reserve">Reservations</a>
       </li>
       <li class="nav-item" style = 'padding-left: 20px;'>
         <a href="#"  class="nav-link" onclick="document.getElementById('logout-form').submit();">Logout</a>
@@ -99,7 +99,7 @@
         <a class="nav-link" href="#">Tickets</a>
       </li>
       <li class="nav-item" style = 'padding-left: 20px;'>
-        <a class="nav-link" href="#">Reservations</a>
+        <a class="nav-link" href="/reserve">Reservations</a>
       </li>
       <li class="nav-item" style = 'padding-left: 20px;'>
         <a href="#"  class="nav-link" onclick="document.getElementById('logout-form').submit();">Logout</a>
