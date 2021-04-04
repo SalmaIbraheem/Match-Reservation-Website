@@ -46,21 +46,37 @@
     <body>
     <table>
         <tr>
-            <td>Home Team</td>
+            <td style="font-weight: bold;">Home Team</td>
             <td>{{$match->homeTeam}}</td>
         </tr>
         <tr>
-            <td>Away Team</td>
+            <td  style="font-weight: bold;">Away Team</td>
             <td> {{$match->awayTeam}}</td>
         </tr>
         <tr>
-            <td>Date</td>
+            <td  style="font-weight: bold;">Stadium Location</td>
+            <td> {{$match->stadium->location}}</td>
+        </tr>
+        <tr>
+            <td  style="font-weight: bold;">Date</td>
             <td> {{$match->date}}</td>
+        </tr>
+        <tr>
+            <td  style="font-weight: bold;">Referee</td>
+            <td> {{$match->referee}}</td>
+        </tr>
+        <tr>
+            <td  style="font-weight: bold;">Linesman1</td>
+            <td> {{$match->linesman1}}</td>
+        </tr>
+        <tr>
+            <td  style="font-weight: bold;">Linesman2</td>
+            <td> {{$match->linesman2}}</td>
         </tr>
     </table>
     
     @auth
-    <h3> Available Seat  (click on seat number to reserve it) </h3>
+    <h3 style="margin-left:10%;" > Available Seat  (click on seat number to reserve it) </h3>
     <table>
     <tr>
          @foreach ($match->seats as $seat)
@@ -82,7 +98,7 @@
 
 
         @guest 
-        <h3> Please sign in to be able to reserve seats </h3>
+        <h3 style="margin-left:10%;"> Please sign in to be able to reserve seats </h3>
         @endguest
     </body>
 </html>
