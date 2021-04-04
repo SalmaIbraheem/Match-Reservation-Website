@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Auth;
 
 class EditController extends Controller
 {
@@ -12,14 +13,20 @@ class EditController extends Controller
         return view('auth.Edit');
     }
     // To update an existing user (load to edit)
-    public function edit(Request $request,$id)
+    public function edit(Request $request)
     {
-        $user = User::find($id);
+        $user = User::find(Auth::user()->id);
 
-        $user->name = request('name');
-        $user->email = request('email');
+        $user->first = request('first');
+        $user->last = request('last');
         $user->city = request('city');
-        //$user->password = bcrypt(request('password'));
+        $user->address = request('address');
+        $user->gender = request('gender');
+        $user->bday = request('bday');
+        if(request('password'))
+        {
+            $user->password = bcrypt(request('password'));
+        }
 
         $user->save();
         return back();

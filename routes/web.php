@@ -17,9 +17,8 @@ use App\Http\Controllers\ReserveController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+    
+Route::get('/',[App\Http\Controllers\MatchController::class, 'index']);
 
 Auth::routes();
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
@@ -30,7 +29,7 @@ Route::post('/users/{id}', [App\Http\Controllers\UsersController::class, 'change
 Route::delete('/users/{id}', [App\Http\Controllers\UsersController::class, 'delete'])->name('userDelete');
 
 Route::get('/profile/edit', [App\Http\Controllers\EditController::class, 'index'])->name('editpage');
-Route::post('/profile/edit/{id}', [App\Http\Controllers\EditController::class, 'edit'])->name('edit');
+Route::post('/profile/edit', [App\Http\Controllers\EditController::class, 'edit'])->name('edit');
 
 
 Route::get('/m/create',[App\Http\Controllers\MatchController::class, 'create']);

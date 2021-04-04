@@ -54,10 +54,7 @@
                     <i class="fa fa-lock"></i> </span> </div> 
                     <div class="container-login100-form-btn p-t-10"> 
                         <button type="submit" class="login100-form-btn btn btn-primary">{{ __('Login') }}</button> 
-                    @if (Route::has('password.request'))
-                        <a href="{{ route('password.request') }}" class="txt1"> {{ __('Forgot Your Password?') }} </a> 
-                    @endif
-                    </div> 
+
                     <div class="text-center w-full p-t-25 p-b-230"> </div> 
                     <div class="text-center w-full"> 
                         <a class="txt1" href="{{ route('register') }}"> 

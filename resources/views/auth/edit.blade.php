@@ -34,13 +34,41 @@
     <body>
     
     <div class="limiter"> 
-        <div class="container-login100" >
-            <div class="wrap-login100 p-t-190 p-b-30" style="padding-top: 0px;">    
-                <form method="POST" action="/profile/edit/{{Auth::user()->id}}">
-                    @csrf
+    <div class="container-login100" >
+        <div class="wrap-login100 ">    
+            <span class="login100-form-title "> Edit Information </span>
+
+            <div class="card-body">
+                <form method="POST" action="{{ route('edit') }}">
+                @csrf
+                    
+                    <div class="wrap-input100 validate-input m-b-10">
+                        <label for="first" style = "color: lightgray;">First Name</label> 
+                        <input id="first" class="input100 form-control " type="name" name="first" placeholder="First Name"  value="{{Auth::user()->first}}" required autocomplete="first" autofocus> 
+
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                        <span class="focus-input100"></span> 
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-10">
+                        <label for="last" style = "color: lightgray;">Last Name</label> 
+                        <input id="last" class="input100 form-control " type="name" name="last" placeholder="Last Name" value="{{Auth::user()->last}}" required autocomplete="last" autofocus> 
+
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                        <span class="focus-input100"></span> 
+                    </div>
                     <div class="wrap-input100 validate-input m-b-10">
                         <label for="city" style = "color: lightgray;">City</label> 
-                        <input id="city" class="input100 form-control " type="city" name="city" placeholder="city" value="{{Auth::user()->city}}" required autocomplete="city" autofocus> 
+                        <input id="city" class="input100 form-control " type="text" name="city" placeholder="city" value="{{Auth::user()->city}}"  required autocomplete="city" autofocus> 
                         @error('city')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -49,36 +77,44 @@
 
                         <span class="focus-input100"></span> 
                     </div>
+                    <div class="wrap-input100 validate-input m-b-10">
+                        <label for="city" style = "color: lightgray;">Address</label> 
+                        <input id="address" class="input100 form-control " type="text" name="address" placeholder="Address" value="{{Auth::user()->address}}" required autocomplete="address" autofocus> 
+
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-10">
+                        <label for="city" style = "color: lightgray;">Gender</label> 
+                        <select name="gender" id="gender"  class="input100 form-control " placeholder="Gender">
+                        @if(Auth::user()->gender == "Male")
+                            <option>Male<option>Female</select>
+                        @else
+                            <option>Female<option>Male</select>
+                        @endif
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-10">
+                        <label for="bday" style = "color: lightgray;">Birthday</label> 
+                        <input id="bday" class="input100 form-control " type="date" name="bday" placeholder="Birthday"  value="{{Auth::user()->bday}}" required autocomplete="bday" autofocus> 
                     </div>
                     <div class="wrap-input100 validate-input m-b-10">
                         <label for="password" style = "color: lightgray;">Password</label>
-                        <input id="password" type="password" class="input100 form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input id="password" type="password" class="input100 form-control " name="password" >
                     </div>
                     <div class="wrap-input100 validate-input m-b-10">
                         <label for="password-confirm" style = "color: lightgray;">Confirm Password</label>
-                        <input id="password-confirm" type="password" class="input100 form-control" name="password_confirmation" required autocomplete="new-password">
+                        <input id="password-confirm" type="password" class="input100 form-control" name="password_confirmation" >
                     </div>
+
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-primary" style="width: inherit; margin: 10% 50%;">
-                                {{ __('Update') }}
+                                {{ __('Submit') }}
                             </button>
                         </div>
                     </div>
-                    
-                    
-                    
-            <script src="/vendor/jquery/jquery-3.2.1.min.js"></script> 
-            <script src="/vendor/bootstrap/js/popper.js"></script> 
-            <script src="/vendor/bootstrap/js/bootstrap.min.js"></script> 
-            <script src="/vendor/select2/select2.min.js"></script> 
-            <script src="/js/main.js"></script> 
-            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script> 
-        </div> 
+                </form>
+            </div>
+        </div>
+
     </div>
 </body> 

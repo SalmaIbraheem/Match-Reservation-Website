@@ -18,9 +18,15 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'first',
+        'last',
+        'address',
+        'bday',
+        'gender',
         'email',
         'password',
         'city',
+        'type',
     ];
 
     public function reservations()

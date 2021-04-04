@@ -44,6 +44,55 @@
                         <span class="focus-input100"></span> 
                     </div>
                     <div class="wrap-input100 validate-input m-b-10">
+                        <label for="first" style = "color: lightgray;">First Name</label> 
+                        <input id="first" class="input100 form-control " type="name" name="first" placeholder="First Name"  required autocomplete="first" autofocus> 
+
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                        <span class="focus-input100"></span> 
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-10">
+                        <label for="last" style = "color: lightgray;">Last Name</label> 
+                        <input id="last" class="input100 form-control " type="name" name="last" placeholder="Last Name"  required autocomplete="last" autofocus> 
+
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                        <span class="focus-input100"></span> 
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-10">
+                        <label for="city" style = "color: lightgray;">City</label> 
+                        <input id="city" class="input100 form-control " type="text" name="city" placeholder="city"  required autocomplete="city" autofocus> 
+                        @error('city')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                        <span class="focus-input100"></span> 
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-10">
+                        <label for="city" style = "color: lightgray;">Address</label> 
+                        <input id="address" class="input100 form-control " type="text" name="address" placeholder="Address"  required autocomplete="address" autofocus> 
+
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-10">
+                        <label for="city" style = "color: lightgray;">Gender</label> 
+                        <select name="gender" id="gender"  class="input100 form-control " placeholder="Gender"><option>Male<option>Female</select>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-10">
+                        <label for="bday" style = "color: lightgray;">Birthday</label> 
+                        <input id="bday" class="input100 form-control " type="date" name="bday" placeholder="Birthday"  required autocomplete="bday" autofocus> 
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-10">
                         <label for="email" style = "color: lightgray;">Email address</label> 
                         <input id="email" class="input100 form-control " type="email" name="email" placeholder="Email"  required autocomplete="email" autofocus> 
 
@@ -55,17 +104,7 @@
 
                         <span class="focus-input100"></span> 
                     </div>
-                    <div class="wrap-input100 validate-input m-b-10">
-                        <label for="city" style = "color: lightgray;">City</label> 
-                        <input id="city" class="input100 form-control " type="city" name="city" placeholder="city"  required autocomplete="city" autofocus> 
-                        @error('city')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
 
-                        <span class="focus-input100"></span> 
-                    </div>
                     <div class="wrap-input100 validate-input m-b-10">
                         <label for="password" style = "color: lightgray;">Password</label>
                         <input id="password" type="password" class="input100 form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
