@@ -39,12 +39,9 @@
             }
         </style>
     </head>
-    <div>
-        @include('layouts.navigation')
-        @yield('navigation')
-    </div>
+   
     <body>
-    <table>
+    <table style="margin-top:10%;">
         <tr>
             <td style="font-weight: bold;">Home Team</td>
             <td>{{$match->homeTeam}}</td>
