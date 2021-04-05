@@ -131,4 +131,8 @@
         </div>
 
     </div>
+    <script>
+      var today = new Date().toISOString().split('T')[0];
+      document.getElementsByName("bday")[0].setAttribute('max', today);
+    </script>
 </body>

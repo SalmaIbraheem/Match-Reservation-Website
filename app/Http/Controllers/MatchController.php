@@ -52,13 +52,10 @@ class MatchController extends Controller
            $match->seats()->create([
                 'seat_number' => $i,
 
-
-   
             ]);
 
         }
-   
- 
+        return redirect('/m/create');
     }
 
 }

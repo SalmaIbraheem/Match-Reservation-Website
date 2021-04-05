@@ -1,6 +1,6 @@
 <html lang="en">
     <head>
-        <title>{{Auth::user()->name}}</title>
+        <title>Matches</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,8 +21,8 @@
         <link rel="stylesheet" type="text/css" href="/css/util.css">
         <link rel="stylesheet" type="text/css" href="/css/main.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
         body {
             font-family: 'Nunito';
@@ -46,12 +46,12 @@
             <span class="login100-form-title "> Create Match </span>
 
             <div class="card-body">
-            <form action="/m" method="post">
+  <form action="/m" method="post">
   @csrf
   
   <div class="form-group">
     <label for="homeTeam">Home Team</label>
-    <select class="form-control"  id="homeTeam" name="homeTeam">
+    <select class="form-control h-25"  id="homeTeam" name="homeTeam">
       <option value="El-Ahly">El-Ahly</option>
       <option value="El-Zamalek">El-Zamalek</option>
       <option value="Pyramids">Pyramids</option>
@@ -60,7 +60,7 @@
   </div>
   <div class="form-group">
     <label for="awayTeam">Away Team</label>
-    <select class="form-control"  id="awayTeam" name="awayTeam">
+    <select class="form-control h-25"  id="awayTeam" name="awayTeam">
       <option value="El-Ahly">El-Ahly</option>
       <option value="El-Zamalek">El-Zamalek</option>
       <option value="Pyramids">Pyramids</option>
@@ -69,15 +69,15 @@
   </div>
   <div class="form-group">
     <label for="referee">Referee Name</label>
-    <input type="text" class="form-control" id="referee" name="referee" placeholder="Ahmed">
+    <input type="text" class="form-control" id="referee" name="referee" >
   </div>
   <div class="form-group">
     <label for="linesman1">First linesman</label>
-    <input type="text" class="form-control" id="linesman1" name="linesman1" placeholder="name">
+    <input type="text" class="form-control" id="linesman1" name="linesman1">
   </div>
   <div class="form-group">
     <label for="linesman2">Second linesman</label>
-    <input type="text" class="form-control" id="linesman2" name="linesman2" placeholder="name">
+    <input type="text" class="form-control" id="linesman2" name="linesman2">
   </div>
   <div class="form-group">
     <label for="matchDate">Date</label>
@@ -85,7 +85,7 @@
   </div>
   <div class="form-group">
     <label for="stadium">Stadium</label>
-    <select class="form-control" name="stadium_id">
+    <select class="form-control h-25" name="stadium_id">
         @foreach ($stadiums as $stadium)
             <option value="{{ $stadium->id }}">{{ $stadium->location}}</option>
         @endforeach
@@ -98,4 +98,8 @@
         </div>
 
     </div>
+    <script>
+      var today = new Date().toISOString().split('T')[0];
+      document.getElementsByName("date")[0].setAttribute('min', today);
+    </script>
 </body> 
