@@ -2,13 +2,18 @@
 <html >
     <head>
         <meta charset="utf-8">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Users</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <!-- Styles -->
         <link rel="stylesheet" type="text/css" href="css/navbar.css">
        <style>    
@@ -24,7 +29,7 @@
                 margin-bottom: 1rem;
             }
             .table2 button{
-                width: 70%;
+                width: 90px;
                 padding:3px 5px;
                 font-size: 15px;
                 background: #333333;
@@ -33,7 +38,8 @@
                 border-radius: 4px;
             }
             .table2 td{
-                padding:1%;
+                padding:1% 0;
+                width: 90px;
             }
         </style>
 
@@ -43,48 +49,86 @@
             background-image: url("/images/img-01.jpg");
             }
         </style>
+        
+    <script>
+        function deleteuser(id){
+            if(confirm("Do you want to Delete this User?"))
+            {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: '/users/'+id, //This is the current doc
+                    type: "DELETE",
+                    success: function(response){
+                        document.getElementById(id).remove();
+                    }
+                });  
+            }
+        }
+        function changestate(id){
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/users/'+id, //This is the current doc
+                type: "POST",
+                success: function(response){
+                    console.log('type'+id)
+                    if(response['type'] == 0){
+                        document.getElementById('type'+id).innerHTML = 'User';
+                    }else{
+                        document.getElementById('type'+id).innerHTML = 'Manager';
+                    }
+                }
+            });  
+        }
+    </script>  
     </head>
     <div>
         @include('layouts.navigation')
         @yield('navigation')
     </div>
     <body>
+    <div  style="overflow-x:auto;">
     <table class="table2" style="color:white" >
         <thead>
             <tr>
-                <th >User ID</th>
                 <th >Name</th>
                 <th >Email</th>
+                <th >City</th>
                 <th >State</th>
                 <th >Delete</th>
             </tr>
         </thead>
         <tbody>
         @foreach($users as $user)
-        <tr>
-            <td>{{$user["id"]}}</td>
+        <tr id = '{{$user["id"]}}'>
             <td>{{$user["name"]}}</td>
             <td>{{$user["email"]}}</td>
+            <td>{{$user["city"]}}</td>
             <td>
-            <form method="post" action= "{{ route('userType', $user['id']) }}" >
             @csrf
-                <button type="submit" >
-                        {{$user["type"]}}
+            @if($user["type"] == 0)
+                <button type="button" id = 'type{{$user["id"]}}' onClick="changestate({{ $user->id }})" >
+                        User
                 </button>
-            </form>
+            @else
+                <button type="button" id = 'type{{$user["id"]}}' onClick="changestate({{ $user->id }})" >
+                        Manager
+                </button>
+            @endif
             </td>
             <td>
-            <form method="post" action= "{{ route('userDelete', $user['id']) }}" >
-            <input type="hidden" name="_method" value="DELETE">
             @csrf
-                <button type="submit" value="delete">
+                <button type="button" onClick="deleteuser({{ $user->id }})" >
                         Delete
                 </button>
-            </form>
             </td>
         </tr>
         @endforeach
         </tbody>
-    </table>   
+    </table> 
+    </div>
     </body>
 </html>

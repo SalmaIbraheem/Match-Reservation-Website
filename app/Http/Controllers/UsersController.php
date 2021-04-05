@@ -17,12 +17,17 @@ class UsersController extends Controller
         $user = User::find($id);
         $user->type = 1-$user->type;
         $user->save();
-        return redirect()->route('users');
+        return response()->json([
+            'success' => 'Record has been deleted successfully!',
+            'type' => $user->type
+        ]);
     }
     public function delete($id)
     {
         $user = User::find($id);
         $user->delete();
-        return redirect()->route('users');
+        return response()->json([
+            'success' => 'Record has been deleted successfully!'
+        ]);
     }
 }

@@ -15,7 +15,7 @@ class Match_ extends Model
     }
     public function reserves()
     {
-        return $this->hasMany(Reseravation::class);
+        return $this->hasMany(Reservation::class);
     }
     public function seats()
     {

@@ -40,8 +40,34 @@
     </div>
     <body>
     <ul class="a">
+    <div style="float:left;width=50%;padding:20px 15%;">
+    <div class="row" style="color: white;">
+        <div class="col-md-12" >
+            <div class="heading" style="padding-bottom:40px;">
+            <h3 style="font-size:30px;">Matches</span></h3>
+        </div>
         @foreach ($matches as $match)
-           <a href="{{ route('displayMatch', $match->id) }}"><li>{{$match->homeTeam}}  against {{$match->awayTeam}}</li></a>
+        <div class="row container" style="background: rgba(0, 0, 0, 0.2); padding:20px 0px">
+                <div class="col-md-6"><img src="/images/st.jpg" alt="website template image" style="width:360px;margin-top:20px;"></div>
+                    <div class="col-md-6">
+                        <div class="full blog_cont">
+                        <h4 style="font-size:30px;margin-left:50px;"><a href="{{ route('displayMatch', $match->id) }}">{{$match->homeTeam}}  VS {{$match->awayTeam}}</a></h4>
+                        <p style="font-size:15px;color:lightgray;margin-left:45px;margin-top:20px;">Match Date: {{$match->date}}</p>
+                        <p style="font-size:15px;color:lightgray;margin-left:45px;">Stadium Address: {{$match->stadium->location}}</p>
+                        <p style="font-size:15px;color:lightgray;margin-left:45px;">Referee: {{$match->referee}}</p>
+                        <p style="font-size:15px;color:lightgray;margin-left:45px;">Linesman1: {{$match->linesman1}}</p>
+                        <p style="font-size:15px;color:lightgray;margin-left:45px;">Linesman2: {{$match->linesman2}}</p>
+                        <p style="font-size:15px;color:lightgray;margin-left:45px;">#Seats: {{$match->seats->count()}}</p>
+                        <p style="font-size:15px;color:lightgray;margin-left:45px;">#Reserved Seats: {{$match->reserves->count()}}</p>
+                        </div>
+                        <div class="form-group row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style ="height: 30px;"></div>
+           
         @endforeach
     </ul>
     </body>
