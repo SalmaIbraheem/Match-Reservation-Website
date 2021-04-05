@@ -47,7 +47,7 @@ class StadiumController extends Controller
         ]);
         Stadium::create($data);
 
-        dd(request()->all());
+        return redirect('/s/create');
     }
 
     /**

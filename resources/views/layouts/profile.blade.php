@@ -50,13 +50,13 @@
     </div>
     <div style="float:left;width=50%;padding:20px 0px;">
     <div class="row" style="color: white;">
-        <div class="col-md-12" >
+        <div class="col-md-20" >
             <div class="heading" style="padding-bottom:40px;">
             <h3 style="font-size:30px;">Recent Reservation</span></h3>
         </div>
         @foreach($reservations as $reserve)
             <div class="row container" style="background: rgba(0, 0, 0, 0.2); padding:20px 0px">
-                <div class="col-md-6"><img src="/images/st.jpg" alt="website template image" style="width:300px;hight:300px"></div>
+                <div class="col-md-6"><img src="/images/st.jpg" alt="website template image" style="width:250px;hight:300px"></div>
                     <div class="col-md-6">
                         <div class="full blog_cont">
                         <h4 style="font-size:30px;margin-left:30px;">{{$reserve->match_->homeTeam}} vs {{$reserve->match_->awayTeam}}</h4>
