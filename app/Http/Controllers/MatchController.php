@@ -19,13 +19,18 @@ class MatchController extends Controller
     public function index()
     {
         $matches = Match_::all();
+        
         return view('matches.index',compact('matches'));
     }
 
-    public function show($m)
+    public function show(Request $request, $m)
     {
 
        $match = Match_::find($m);
+  
+       if($request->ajax()){
+        return response()->json(array('match'=>$match->seats));
+     }
         return view('matches.shows',compact('match'));
     }
 

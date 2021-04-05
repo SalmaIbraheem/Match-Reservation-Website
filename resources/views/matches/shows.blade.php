@@ -5,6 +5,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/png" href="/images/icons/favicon.ico" />
+
+        <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+
+        <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" type="text/css" href="/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+
+        <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+
+        <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+
+        <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
+
+        <link rel="stylesheet" type="text/css" href="/css/util.css">
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -37,11 +59,59 @@
             text-align: left;
             padding: 8px;
             }
+      
         </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+   
+    <script>
+    var id= {{$match->id}}
+
+    $(document).ready(function(){
+        setInterval(function(){
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url:'/m'+'/'+id,
+            
+                type:'GET',
+                dataType:'json',
+                success:function(response){
+                    
+                    if(response.match.length>0){
+                    var match ='';
+                   
+                    for(var i=0;i<response.match.length;i++){
+                        var sid=response.match[i].id;
+  
+                        if(response.match[i].free == true){
+                            document.getElementById(sid).style.backgroundColor = 'green' ;
+                            document.getElementById(sid).disabled = false ;
+                        }
+                        else{
+                            document.getElementById(sid).style.backgroundColor = 'red' ;
+                            document.getElementById(sid).disabled = true ;
+                        }
+                        
+                    }
+
+                    }
+                },error:function(err){
+
+                }
+            })
+        }, 5000);
+    });
+    </script>
+
     </head>
    
     <body>
-    <table style="margin-top:10%;">
+    <div>
+        @include('layouts.navigation')
+        @yield('navigation')
+    </div>
+    <table >
     @if(Auth::user()->type == 1)
     <tr>
     <td>    <a class="btn btn-primary" style="font-size:15px;padding:5px 10px;background-color:#333333;;border-color:gray"href="{{ route('showEditMatch', $match->id) }}" >Edit Match</a> </td>
@@ -80,7 +150,7 @@
     @auth
 
     <h3 style="margin-left:10%; " > Available Seat Are in Green  (click on seat number to reserve it) </h3>
-    <table>
+    <table id="seatslist">
     <tr>
          @foreach ($match->seats as $seat)
          
@@ -88,12 +158,12 @@
          @csrf
          @if($seat->free == '1')
          @if(Auth::user()->type == 0)
-            <td><button style="background-color: #4CAF50; "  type="submit" class="btn btn-info">{{$seat->seat_number}}</button></td>
+            <td><button id="{{$seat->id}}" style="background-color: green; "  type="submit" class="btn btn-success">{{$seat->seat_number}}</button></td>
         @else
-        <td><button style="background-color: #4CAF50; "  class="btn btn-info" disabled>{{$seat->seat_number}}</button></td>
+        <td><button id="{{$seat->id}}" style="background-color: green; "  class="btn btn-info" disabled>{{$seat->seat_number}}</button></td>
         @endif
         @else
-        <td>{{$seat->seat_number}}</td>
+        <td><button id="{{$seat->id}}" style="background-color: red; "  class="btn btn-info" disabled>{{$seat->seat_number}}</button></td>
         @endif
         @if($seat->seat_number % $match->stadium->columns == '0')
         </tr><tr>
@@ -101,6 +171,8 @@
          </form>
          @endforeach
     </table>
+    <div>
+    <div>
     @endauth
 
 
