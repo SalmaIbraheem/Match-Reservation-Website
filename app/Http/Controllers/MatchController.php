@@ -29,6 +29,13 @@ class MatchController extends Controller
         return view('matches.shows',compact('match'));
     }
 
+    public function showEdit($m)
+    {
+
+        $stadiums = Stadium::all();
+       $m = Match_::find($m);
+        return view('matches.edit',compact('m','stadiums'));
+    }
     public function store(Request $request)
     {
         //
@@ -60,5 +67,25 @@ class MatchController extends Controller
    
  
     }
+
+    public function edit(Request $request, $m)
+    {
+        $match = Match_::find($m);
+
+        $match->homeTeam = request('homeTeam');
+        $match->awayTeam = request('awayTeam');
+        $match->referee = request('referee');
+        $match->linesman1 = request('linesman1');
+        $match->linesman2 = request('linesman2');
+        $match->date = request('date');
+        $match->stadium_id = request('stadium_id');
+
+
+        $match->save();
+        return back();
+    }
+
+
+
 
 }

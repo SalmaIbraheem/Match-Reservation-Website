@@ -14,7 +14,11 @@ class ReserveController extends Controller
     public function store($seatId)
     {
         $seat = Seat::find($seatId);
- 
+        if($seat->free == false)
+        {
+            echo '<script type="text/javascript">alert("This Seat seems to be arleady reserved, Please choose another seat")</script>';
+        }
+        else{
         auth()->user()->reservations()->create([
             'seat_id' => $seat->id,
             'match__id' => $seat->match_->id,
@@ -24,7 +28,8 @@ class ReserveController extends Controller
             'free'=>false,
         ]);
 
-        return $seat->seat_number;
+        return view('matches.success');
+        }
       
     }
     public function getall()

@@ -78,7 +78,7 @@
     <tr>
          @foreach ($match->seats as $seat)
          
-         <form action="{{ route('reserveSeat', $seat->id) }}" method="post">
+         <form action="{{ route('credit', $seat->id) }}" method="get">
          @csrf
          @if($seat->free == '1')
             <td><button style="background-color: #4CAF50; "  type="submit" class="btn btn-info">{{$seat->seat_number}}</button></td>
