@@ -1,18 +1,71 @@
-@extends('layouts.app')
+<html lang="en">
+    <head>
+        <title>{{Auth::user()->name}}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
-<div class="container">
+        <link rel="icon" type="image/png" href="/images/icons/favicon.ico" />
 
-<form action="/m" method="post">
+        <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+
+        <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" type="text/css" href="/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+
+        <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+
+        <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+
+        <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
+
+        <link rel="stylesheet" type="text/css" href="/css/util.css">
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Nunito';
+            background-image: url("/images/img-01.jpg");
+
+        }
+        label {
+          color:white;
+        }
+    </style>
+    </head>
+    <div>
+        @include('layouts.navigation')
+        @yield('navigation')
+    </div>
+    <body>
+    
+    <div class="limiter"> 
+    <div class="container-login100" >
+        <div class="wrap-login100 ">    
+            <span class="login100-form-title "> Create Match </span>
+
+            <div class="card-body">
+            <form action="/m" method="post">
   @csrf
   
   <div class="form-group">
     <label for="homeTeam">Home Team</label>
-    <input type="text" class="form-control" id="homeTeam" name="homeTeam" placeholder="El-Ahly">
+    <select class="form-control"  id="homeTeam" name="homeTeam">
+      <option value="El-Ahly">El-Ahly</option>
+      <option value="El-Zamalek">El-Zamalek</option>
+      <option value="Pyramids">Pyramids</option>
+      <option value="Wadi Degla">Wadi Degla</option>
+    </select>
   </div>
   <div class="form-group">
     <label for="awayTeam">Away Team</label>
-    <input type="text" class="form-control" id="awayTeam" name="awayTeam" placeholder="El-Zamlak">
+    <select class="form-control"  id="awayTeam" name="awayTeam">
+      <option value="El-Ahly">El-Ahly</option>
+      <option value="El-Zamalek">El-Zamalek</option>
+      <option value="Pyramids">Pyramids</option>
+      <option value="Wadi Degla">Wadi Degla</option>
+    </select>
   </div>
   <div class="form-group">
     <label for="referee">Referee Name</label>
@@ -41,5 +94,8 @@
 
   <button type="submit" class="btn btn-primary">Add Match</button>
 </form>
-</div>
-@endsection
+            </div>
+        </div>
+
+    </div>
+</body> 
