@@ -28,7 +28,7 @@ class ReserveController extends Controller
             'free'=>false,
         ]);
 
-        return view('matches.success');
+        return view('matches.success')->with (['seat' => $seat]);
         }
       
     }

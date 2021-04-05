@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Stadium;
 use App\Models\Match_;
 use App\Models\Seat;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class MatchController extends Controller
@@ -34,7 +34,9 @@ class MatchController extends Controller
 
         $stadiums = Stadium::all();
        $m = Match_::find($m);
-        return view('matches.edit',compact('m','stadiums'));
+       $matchDate = Carbon::parse($m->date)->format('Y-m-d');
+
+        return view('matches.edit',compact('m','stadiums','matchDate'));
     }
     public function store(Request $request)
     {

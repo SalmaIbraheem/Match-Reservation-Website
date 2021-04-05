@@ -42,6 +42,11 @@
    
     <body>
     <table style="margin-top:10%;">
+    @if(Auth::user()->type == 1)
+    <tr>
+    <td>    <a class="btn btn-primary" style="font-size:15px;padding:5px 10px;background-color:#333333;;border-color:gray"href="{{ route('showEditMatch', $match->id) }}" >Edit Match</a> </td>
+    </tr>
+    @endif
         <tr>
             <td style="font-weight: bold;">Home Team</td>
             <td>{{$match->homeTeam}}</td>
@@ -73,7 +78,8 @@
     </table>
     
     @auth
-    <h3 style="margin-left:10%; " > Available Seat  (click on seat number to reserve it) </h3>
+
+    <h3 style="margin-left:10%; " > Available Seat Are in Green  (click on seat number to reserve it) </h3>
     <table>
     <tr>
          @foreach ($match->seats as $seat)
@@ -81,7 +87,11 @@
          <form action="{{ route('credit', $seat->id) }}" method="get">
          @csrf
          @if($seat->free == '1')
+         @if(Auth::user()->type == 0)
             <td><button style="background-color: #4CAF50; "  type="submit" class="btn btn-info">{{$seat->seat_number}}</button></td>
+        @else
+        <td><button style="background-color: #4CAF50; "  class="btn btn-info" disabled>{{$seat->seat_number}}</button></td>
+        @endif
         @else
         <td>{{$seat->seat_number}}</td>
         @endif

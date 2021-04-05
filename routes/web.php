@@ -36,7 +36,7 @@ Route::get('/m/create',[App\Http\Controllers\MatchController::class, 'create']);
 Route::get('/m',[App\Http\Controllers\MatchController::class, 'index']);
 Route::get('/m/{id}',[App\Http\Controllers\MatchController::class, 'show'])->name('displayMatch');
 Route::post('/m',[App\Http\Controllers\MatchController::class, 'store']);
-Route::get('/m/{id}/edit', [App\Http\Controllers\MatchController::class, 'edit'])->name('showEditMatch');
+Route::get('/m/{id}/edit', [App\Http\Controllers\MatchController::class, 'showEdit'])->name('showEditMatch');
 Route::post('/m/{id}/edit', [App\Http\Controllers\MatchController::class, 'edit'])->name('editMatch');
 
 Route::get('/s/create',[App\Http\Controllers\StadiumController::class, 'create']);
@@ -46,4 +46,6 @@ Route::post('/s',[App\Http\Controllers\StadiumController::class, 'store']);
 Route::post('/reserve/{id}',[App\Http\Controllers\ReserveController::class, 'store'])->name('reserveSeat');
 Route::get('/reserve',[App\Http\Controllers\ReserveController::class, 'getall'])->name('reservations');
 
-Route::get('/pay/{id}', function () { return view('payment')->with (['seatId' => $id]); })->name('credit');
+Route::get('/pay/{id}', function ($id) { 
+    return view('payment')->with (['seatId' => $id]); 
+})->name('credit');

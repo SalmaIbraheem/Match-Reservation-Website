@@ -34,11 +34,9 @@
             }
         </style>
     </head>
-    <div>
-        @include('layouts.navigation')
-        @yield('navigation')
-    </div>
+
     <body>
-            <h3 style="text-align: center;"> You have succefully reserved seat # </h3>
+            <h3 style="text-align: center; color: white;position: fixed; /* or absolute */top: 50%; left:30%"> You have succefully reserved seat {{$seat->seat_number}} with ticket id :{{$seat->id}} </h3>
+            <a style="text-align: center; color: white;position: fixed; /* or absolute */top: 70%;left:40%"class="nav-link" href="/">Go Back To Home</a>
     </body>
 </html>

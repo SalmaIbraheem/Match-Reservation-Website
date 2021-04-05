@@ -390,13 +390,10 @@ input {
 }
         </style>
     </head>
-    <div>
-        @include('layouts.navigation')
-        @yield('navigation')
-    </div>
+
     <body>
     <div class="payment-title">
-        <h1>Payment Information</h1>
+        <h1 style="color:white;">Payment Information</h1>
     </div>
     <div class="container preload">
         <div class="creditcard">
